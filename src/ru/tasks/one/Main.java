@@ -5,8 +5,12 @@ package ru.tasks.one;
  */
 public class Main {
     public static void main(String[] args) {
-        StartFindThread startFindThread = new StartFindThread(createText(args));
-        startFindThread.start();
+        new StartFindThread(createText(args)).start();
+        new StartFindThread(createText(args)).start();
+        new StartFindThread(createText(args)).start();
+        new StartFindThread(createText(args)).start();
+        new StartFindThread(createText(args)).start();
+        new StartFindThread(createText(args)).start();
     }
 
     /**

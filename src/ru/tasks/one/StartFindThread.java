@@ -1,12 +1,14 @@
 package ru.tasks.one;
 
-import java.io.File;
+import java.io.*;
 
 public class StartFindThread extends Thread {
-    String text;
+    private String text;
+    private FoundText foundText;
 
     StartFindThread(String text) {
         this.text = text;
+        foundText = new FoundText();
     }
 
     @Override
@@ -15,23 +17,24 @@ public class StartFindThread extends Thread {
         for (File disk : disks) {
             findInDir(disk, text);
         }
+        foundText.printFoundText();
     }
 
     /**
-     * Ищет определенный файл в файловой системе
+     * Ищет текст в файлах.txt файловой системе
      *
      * @param dir  текущая директория
      * @param text название файла для поиска
      */
-    private static void findInDir(File dir, String text) {
+    private void findInDir(File dir, String text) {
         File[] listFiles = dir.listFiles();
         if (listFiles != null) {
             for (File file : listFiles) {
-                if (file.isDirectory() && file.canRead()) {
+                if (file.isDirectory()) {
                     findInDir(file, text);
                 } else {
-                    if (file.getName().equals(text)) {
-                        System.out.println(file.getPath());
+                    if (file.toString().endsWith(".txt") && file.canRead()) {
+                        new ReadFileThread(file, text, foundText).start();
                     }
                 }
             }
