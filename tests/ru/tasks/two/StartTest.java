@@ -1,4 +1,7 @@
 package ru.tasks.two;
+import ru.consumer.ConsumerThread;
+import ru.supplier.Supplier;
+import ru.supplier.SupplierThread;
 
 public class StartTest {
 

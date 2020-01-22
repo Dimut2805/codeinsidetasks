@@ -1,6 +1,6 @@
-package ru.tasks.two;
+package ru.consumer;
 
-import java.util.ArrayList;
+import java.util.Queue;
 import java.util.logging.Logger;
 
 public class Consumer { //Потребитель
@@ -11,10 +11,10 @@ public class Consumer { //Потребитель
      *
      * @param tasks список заданий
      */
-    public static void performTask(ArrayList<String> tasks) {
+    public static void performTask(Queue<String> tasks) {
         if (tasks.size() != 0) {
-            LOGGER.info(tasks.get(0));
-            tasks.remove(0);
+            LOGGER.info(tasks.element());
+            tasks.remove();
         } else {
             LOGGER.info("Пусто");
         }

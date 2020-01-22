@@ -1,11 +1,11 @@
-package ru.tasks.two;
+package ru.consumer;
 
-import java.util.ArrayList;
+import java.util.PriorityQueue;
 
 public class ConsumerThread extends Thread {
-    private ArrayList<String> tasks;
+    private PriorityQueue<String> tasks;
 
-    ConsumerThread(ArrayList<String> tasks) {
+    public ConsumerThread(PriorityQueue<String> tasks) {
         this.tasks = tasks;
     }
 
